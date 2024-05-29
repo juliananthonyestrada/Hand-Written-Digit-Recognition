@@ -16,7 +16,7 @@ mnist = tf.keras.datasets.mnist
 x_train = tf.keras.utils.normalize(x_train, axis=1)
 x_test = tf.keras.utils.normalize(x_test, axis=1)
 
-'''
+
 # initialize the neural network model
 nn_model = tf.keras.models.Sequential()
 
@@ -24,8 +24,8 @@ nn_model = tf.keras.models.Sequential()
 nn_model.add(tf.keras.layers.Flatten(input_shape=(28, 28)))
 
 # add layers to the model -> Dense layer is the most basic layer (google neural network graph) -> with 128 neurons each
-nn_model.add(tf.keras.layers.Dense(128, activation='relu'))
-nn_model.add(tf.keras.layers.Dense(128, activation='relu'))
+nn_model.add(tf.keras.layers.Dense(256, activation='relu'))
+nn_model.add(tf.keras.layers.Dense(256, activation='relu'))
 
 # add output layer -> 10 layers to represent 10 possible output digits
 # softmax provides a 'probability' to each neuron -> greatest value is output
@@ -35,11 +35,11 @@ nn_model.add(tf.keras.layers.Dense(10, activation='softmax'))
 nn_model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 # fit data to the model
-nn_model.fit(x_train, y_train, epochs=3)
+nn_model.fit(x_train, y_train, epochs=5)
 
 # save the model to the directory
 nn_model.save('handwritten_model.keras')
-'''
+
 
 # lines 19-42 train the model and lines 46-52 evaluate
 # to evaluate the model comment out 19-42 and to train comment out 46-52
